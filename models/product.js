@@ -7,6 +7,26 @@ module.exports = (sequelize, DataTypes) => {
 				notEmpty: true,
 			},
 		},
+		sku: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			validate: {
+				notEmpty: true,
+			},
+		},
+		price: {
+			type: DataTypes.FLOAT,
+			allowNull: false,
+			validate: {
+				notEmpty: true,
+			},
+		},
+		unitsInStock: {
+			type: DataTypes.INTEGER,
+		},
+		unitsInOrder: {
+			type: DataTypes.INTEGER,
+		},
 	});
 
 	return Product;
