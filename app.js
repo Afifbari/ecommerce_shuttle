@@ -5,6 +5,8 @@ const db = require("./models");
 const productRoutes = require("./routes/products");
 const userRoutes = require("./routes/users");
 const categoryRoutes = require("./routes/categories");
+const shipperRoutes = require("./routes/shippers");
+const discountRoutes = require("./routes/discounts");
 
 // Initilizing express
 const app = express();
@@ -23,6 +25,12 @@ app.use("/user/", userRoutes);
 
 // Category
 app.use("/category/", categoryRoutes);
+
+// Shipper
+app.use("/shipper/", shipperRoutes);
+
+// Discount
+app.use("/discount/", discountRoutes);
 
 // Connect to database and run server
 db.sequelize.sync().then((req) => {

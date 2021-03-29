@@ -9,14 +9,14 @@ module.exports = {
 		 * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
 		 */
 		return Promise.all([
-			queryInterface.createTable("Shippers", {
+			queryInterface.createTable("Discounts", {
 				id: {
 					allowNull: false,
 					autoIncrement: true,
 					primaryKey: true,
 					type: Sequelize.INTEGER,
 				},
-				name: {
+				code: {
 					type: Sequelize.STRING,
 					allowNull: false,
 					unique: true,
@@ -24,18 +24,30 @@ module.exports = {
 						notEmpty: true,
 					},
 				},
-				email: {
+				type: {
 					type: Sequelize.STRING,
 					allowNull: false,
-					unique: true,
 					validate: {
 						notEmpty: true,
 					},
 				},
-				phone: {
-					type: Sequelize.STRING,
+				amount: {
+					type: Sequelize.INTEGER,
 					allowNull: false,
-					unique: true,
+					validate: {
+						notEmpty: true,
+					},
+				},
+				validity: {
+					type: Sequelize.DATE,
+					allowNull: false,
+					validate: {
+						notEmpty: true,
+					},
+				},
+				discountsLeft: {
+					type: Sequelize.INTEGER,
+					allowNull: false,
 					validate: {
 						notEmpty: true,
 					},
@@ -59,6 +71,6 @@ module.exports = {
 		 * Example:
 		 * await queryInterface.dropTable('users');
 		 */
-		return Promise.all([queryInterface.dropTable("Shippers")]);
+		return Promise.all([queryInterface.dropTable("Discounts")]);
 	},
 };
