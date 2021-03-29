@@ -3,7 +3,7 @@ const db = require("./models");
 
 // // Route imports
 const productRoutes = require("./routes/products");
-// const userRoutes = require("./routes/users");
+const userRoutes = require("./routes/users");
 
 // Initilizing express
 const app = express();
@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/product/", productRoutes);
 
 // User
-// app.use("/user/", userRoutes);
+app.use("/user/", userRoutes);
 
 // Connect to database and run server
 db.sequelize.sync().then((req) => {
