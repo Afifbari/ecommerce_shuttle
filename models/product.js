@@ -29,5 +29,10 @@ module.exports = (sequelize, DataTypes) => {
 		},
 	});
 
+	Product.belongsTo(sequelize.models.Category, {
+		foreignKey: "categoryId",
+		onDelete: "CASCADE",
+	});
+
 	return Product;
 };
