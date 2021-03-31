@@ -21,5 +21,10 @@ module.exports = (sequelize, DataTypes) => {
 		onDelete: "CASCADE",
 	});
 
+	Payment.hasMany(sequelize.models.Card, {
+		foreignKey: "paymentId",
+		onDelete: "CASCADE",
+	});
+
 	return Payment;
 };
