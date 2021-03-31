@@ -31,5 +31,10 @@ module.exports = (sequelize, DataTypes) => {
 		},
 	});
 
+	// Buyer.hasMany(sequelize.models.Order, {
+	// 	foreignKey: "buyerId",
+	// 	onDelete: "CASCADE",
+	// });
+
 	return Buyer;
 };

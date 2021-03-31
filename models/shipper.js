@@ -26,5 +26,10 @@ module.exports = (sequelize, DataTypes) => {
 		},
 	});
 
+	Shipper.hasMany(sequelize.models.Order, {
+		foreignKey: "shipperId",
+		onDelete: "SET NULL",
+	});
+
 	return Shipper;
 };
