@@ -9,14 +9,14 @@ module.exports = {
 		 * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
 		 */
 		return Promise.all([
-			queryInterface.createTable("Product_images", {
+			queryInterface.createTable("Payments", {
 				id: {
 					allowNull: false,
 					autoIncrement: true,
 					primaryKey: true,
 					type: Sequelize.INTEGER,
 				},
-				imageLink: {
+				paymentType: {
 					type: Sequelize.STRING,
 					allowNull: false,
 					validate: {
@@ -30,10 +30,10 @@ module.exports = {
 						notEmpty: true,
 					},
 				},
-				productId: {
+				orderId: {
 					type: Sequelize.INTEGER,
 					references: {
-						model: "products",
+						model: "orders",
 						key: "id",
 					},
 					allowNull: false,
@@ -57,6 +57,6 @@ module.exports = {
 		 * Example:
 		 * await queryInterface.dropTable('users');
 		 */
-		return Promise.all([queryInterface.dropTable("Product_Images")]);
+		return Promise.all([queryInterface.dropTable("Payments")]);
 	},
 };
