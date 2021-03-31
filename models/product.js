@@ -34,5 +34,10 @@ module.exports = (sequelize, DataTypes) => {
 		onDelete: "CASCADE",
 	});
 
+	Product.hasMany(sequelize.models.Order_Has_Products, {
+		foreignKey: "productId",
+		onDelete: "CASCADE",
+	});
+
 	return Product;
 };
