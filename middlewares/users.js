@@ -5,7 +5,7 @@ exports.getAllUsers = (req, res) => {
 	User.findAll().then((users) => res.json({ users }));
 };
 
-// Create a product
+// Create a User
 exports.createUser = (req, res) => {
 	const { userType } = req.body;
 

@@ -47,5 +47,10 @@ module.exports = (sequelize, DataTypes) => {
 		onDelete: "SET NULL",
 	});
 
+	Order.hasMany(sequelize.models.Cart, {
+		foreignKey: "orderId",
+		onDelete: "SET NULL",
+	});
+
 	return Order;
 };

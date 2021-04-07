@@ -1,19 +1,37 @@
 const { Shipper } = require("../models");
+const jwt = require("jsonwebtoken");
 
-// Get all users
+// Get all shippers
 exports.getAllShippers = (req, res) => {
-	Shipper.findAll().then((shippers) => res.json({ shippers }));
+	jwt.verify(req.token, "secretkey", (err, authData) => {
+		console.log(req.userType);
+		if (err || req.userType !== "admin") {
+			res.json({ msg: "Access Denied. (middleware)" });
+		} else {
+			Shipper.findAll().then((shippers) => res.json({ shippers }));
+		}
+	});
 };
 
-// Create a product
-exports.createShipper = (req, res) => {
+// Create a Shipper
+exports.createShipper = async (req, res) => {
 	const { name, email, phone } = req.body;
 
-	Shipper.create({
-		name,
-		email,
-		phone,
-	})
-		.then((shippers) => res.json({ shippers }))
-		.catch((err) => console.log(err));
+	jwt.verify(req.token, "secretkey", (err, authData) => {
+		console.log(req.userType);
+		if (err || req.userType !== "admin") {
+			res.json({ msg: "Access Denied. (middleware)" });
+		} else {
+			Shipper.create({
+				name,
+				email,
+				phone,
+			})
+				.then((shippers) => res.json({ shippers }))
+				.catch((err) => {
+					console.log(err);
+					res.json({ msg: "Error in database." });
+				});
+		}
+	});
 };

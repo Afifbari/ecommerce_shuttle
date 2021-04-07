@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const { sellerVerifyToken } = require("../middlewares/sellers");
+
 // Importing product related middlewares
 const productMiddlewares = require("../middlewares/products");
 
@@ -8,6 +10,10 @@ const productMiddlewares = require("../middlewares/products");
 router.get("/", productMiddlewares.getAllProducts);
 
 // Create a product
-router.post("/create", productMiddlewares.createProduct);
+router.post(
+	"/create",
+	sellerVerifyToken,
+	productMiddlewares.createProduct
+);
 
 module.exports = router;

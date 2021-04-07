@@ -7,16 +7,8 @@ module.exports = (sequelize, DataTypes) => {
 				notEmpty: true,
 			},
 		},
-
 		uploadedAt: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				notEmpty: true,
-			},
-		},
-		amount: {
-			type: DataTypes.INTEGER,
+			type: DataTypes.DATE,
 			allowNull: false,
 			validate: {
 				notEmpty: true,

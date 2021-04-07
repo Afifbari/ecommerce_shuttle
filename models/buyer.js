@@ -13,6 +13,11 @@ module.exports = (sequelize, DataTypes) => {
 			unique: true,
 			validate: {
 				notEmpty: true,
+				isEmail: true,
+				len: [2, 15],
+				notNull: {
+					msg: "Please enter your email",
+				},
 			},
 		},
 		phone: {
